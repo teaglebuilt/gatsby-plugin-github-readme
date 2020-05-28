@@ -1,0 +1,19 @@
+{
+  "name": "gatsby-plugin-github-readme",
+  "version": "1.0.0",
+  "description": "React github readme card component for gatsby",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["gatsby", "gatsby-plugin", "react-component", "github", "readme", "card"],
+  "author": "Dillan Teagle",
+  "license": "ISC",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "gatsby-node-helpers": "^0.3.0",
+    "node-fetch": "^2.6.0",
+    "query-string": "^6.10.1",
+    "react-markdown": "^4.3.1"
+  }
+}
