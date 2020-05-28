@@ -5,9 +5,9 @@ const GithubContext = createContext();
 
 const Container = ({ children }) => {
   const repos = useGithub();
-  console.log(children)
+  
   return (
-    <GithubContext.Provider value={{ repos }}>
+    <GithubContext.Provider value={repos}>
             {children}
     </GithubContext.Provider>
   );
