@@ -45,22 +45,13 @@ const README = ({ user, repo }) => {
     }, [repos, gitrepo, toggle])
 
     return(
-        
-        <Readme>
-            {loading ? <div>...loading</div> : 
-                <LanguageGraph onClick={() => setToggle(!toggle)}>
-                    <Graph {...gitrepo.languages} />
-                </LanguageGraph>
+            <Readme>
+            {loading ? <div>loading</div> : 
+            <LanguageGraph onClick={() => setToggle(!toggle)}>
+                <Graph {...gitrepo.languages} />
+            </LanguageGraph>
             }
-            {/* <LanguageGraph onClick={() => setToggle(!toggle)}>
-                <Graph {...gitrepo} />
-            </LanguageGraph> */}
-            {/* {toggle ? 
-                <LanguageStats>
-                    <Stats {...gitrepo.node.languages} />
-                </LanguageStats> : <Hidden />
-            }  */}
-        </Readme>
+            </Readme>
     )
 }
 
