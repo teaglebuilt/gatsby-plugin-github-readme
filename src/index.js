@@ -47,9 +47,14 @@ const README = ({ user, repo }) => {
     return(
             <Readme>
             {loading ? <div>loading</div> : 
+            <>
             <LanguageGraph onClick={() => setToggle(!toggle)}>
                 <Graph {...gitrepo.languages} />
             </LanguageGraph>
+            {toggle ? <LanguageStats>
+                <Stats {...gitrepo.languages} />
+            </LanguageStats> : ""}
+            </>
             }
             </Readme>
     )
