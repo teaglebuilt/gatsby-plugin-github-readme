@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown/with-html";
 import useGithub from "./hooks/useGithubData";
+import emoji from 'emoji-dictionary';
 import styled from "styled-components";
 import Graph from "./components/graph";
 import Stats from "./components/stats";
@@ -49,6 +51,21 @@ const Heading = styled.h2`
 const GithubLogo = styled.span`
     margin-right: 5px;
 `;
+
+const Description = styled.p`
+    font-size: 18px;
+    padding: 10px;
+    line-height: 1em;
+`;
+
+const Content = styled.div`
+    padding: 1em 0.5em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    max-height: calc(21vw + 165px);
+    overflow: hidden
+`;
+
+
 const README = ({ user, repo }) => {
     const [gitrepo, setGitRepo] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -60,6 +77,8 @@ const README = ({ user, repo }) => {
         setGitRepo(repository.node)
         setLoading(false);
     }, [repos, gitrepo, toggle])
+
+    const emojiSupport = text => text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name))
 
     return(
             <Readme>
@@ -86,7 +105,16 @@ const README = ({ user, repo }) => {
                         </GithubLogo>
                         {user}/{repo}
                     </Heading>
+                    <Description>{gitrepo.description}</Description>
                 </Overview>
+                <Content>
+                    <ReactMarkdown
+                        source={gitrepo.readme}
+                        escapeHtml={false}
+                        renderers={{ text: emojiSupport }}
+                        transformImageUri={uri => uri.startsWith("http") ? uri : `${process.env.IMAGE_BASE_URL}${uri}`}
+                    />
+                </Content>
                 </>
                 }
             </Readme>
