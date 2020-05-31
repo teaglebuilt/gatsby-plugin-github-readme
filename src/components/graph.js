@@ -5,6 +5,7 @@ import data from "../../colors.js";
 
 const LanguageWrapper = (props) => {
   const color = Object.entries(data).filter(key => key[0] == props[0])
+  console.log(color)
   const hex = color[0][1]
   const Language = styled.span`
     background-color: ${hex};

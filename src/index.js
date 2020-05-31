@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown/with-html";
 import useGithub from "./hooks/useGithubData";
+import Emoji from "react-emoji-render";
 import emoji from 'emoji-dictionary';
 import styled from "styled-components";
 import Graph from "./components/graph";
@@ -65,6 +66,27 @@ const Content = styled.div`
     overflow: hidden
 `;
 
+const GHButton = styled.div`
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 60px 42px var(--theme-container-background, #fff);
+    position: relative;
+    z-index: 100;
+    padding: 0.1em 0 1.15em;
+
+    a {
+        color: #0366d6;
+        background-color: #f1f8ff;
+        border-radius: 3px;
+        line-height: 20px;
+        padding: 0.25em 1.2em;
+        opacity: .9;
+        font-size: 0.94em;
+        font-weight: bold;
+        border: 1px solid #0366d6;
+    }
+`;
+
 
 const README = ({ user, repo }) => {
     const [gitrepo, setGitRepo] = useState(null);
@@ -105,7 +127,7 @@ const README = ({ user, repo }) => {
                         </GithubLogo>
                         {user}/{repo}
                     </Heading>
-                    <Description>{gitrepo.description}</Description>
+                    <Description><Emoji text={gitrepo.description} /></Description>
                 </Overview>
                 <Content>
                     <ReactMarkdown
@@ -115,6 +137,9 @@ const README = ({ user, repo }) => {
                         transformImageUri={uri => uri.startsWith("http") ? uri : `${process.env.IMAGE_BASE_URL}${uri}`}
                     />
                 </Content>
+                <GHButton>
+                    <a href={gitrepo.url}>View Repo</a>
+                </GHButton>
                 </>
                 }
             </Readme>
