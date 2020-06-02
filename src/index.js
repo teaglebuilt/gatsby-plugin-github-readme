@@ -88,7 +88,7 @@ const GHButton = styled.div`
 `;
 
 
-const README = ({ user, repo }) => {
+export const GithubReadme = ({ user, repo }) => {
     const [gitrepo, setGitRepo] = useState(null);
     const [loading, setLoading] = useState(true);
     const[toggle, setToggle] = useState(false)
@@ -146,4 +146,3 @@ const README = ({ user, repo }) => {
     )
 }
 
-export default README;

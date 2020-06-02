@@ -2,6 +2,7 @@
 
 <div align="center">
     <h1>gatsby plugin github readme</h1>
+    <a href="https://www.gatsbyjs.org/packages/gatsby-plugin-github-readme/?=gatsby-plugin-github" alt="gatsby plugin homepage">Gatsby Plugin Homepage</a>
     <p>Load github readme card components in jsx, remark, mdx.</p>
     <p>
         <img src="https://img.shields.io/npm/v/gatsby-plugin-github-readme?style=for-the-badge" alt="npm package for gatsby-plugin-github-readme">
@@ -30,6 +31,16 @@ plugins: [
     }
 ]
 ```
+
+
+```js
+import { GithubReadme } from "gatsby-plugin-github-readme";
+
+export default () => {
+  <GithubReadme user="user" repo="name of repo" />
+}
+```
+
 
 # Support
 
